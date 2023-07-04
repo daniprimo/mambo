@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:pedropaulo0208@mambo.wrfm9y4.mongodb.net/?retryWrites=true&w=majority
+      database: mambo
