@@ -1,4 +1,6 @@
 
 FROM openjdk:17-jdk-slim
-COPY ./target/mambo-v1-0.0.1-SNAPSHOT.jar demo.jar
-ENTRYPOINT ["java","-jar","demo.jar"]
+VOLUME /tmp
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+EXPOSE 8080
