@@ -11,16 +11,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Endereco {
+public class CNH {
 
-	private String logradouro;	
-	
-	private String uf;
-	
-	private String cep;
-	
-	private String localidade;
-	
-	private String bairro;
+	private String numero;
+	private String categoria;
 	
 }

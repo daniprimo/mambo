@@ -1,14 +1,17 @@
 package br.com.mambo.transporte.model;
 
 
-import org.springframework.data.annotation.Id;
-
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "motorista")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,13 +19,12 @@ import lombok.Setter;
 public class Motorista {
 
 	@Id
-	private String id;
-	
-	@NotBlank
 	private String nome;
 	
-	private String nomeCompleto;
+	@Embedded
+	private DadosPessoais nomeCompleto;
 	
-	private String telefone;
+	@Embedded
+	private CNH numeroDaCnh;
 	
 }

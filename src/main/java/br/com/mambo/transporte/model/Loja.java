@@ -1,20 +1,20 @@
 package br.com.mambo.transporte.model;
 
-import java.util.List;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Document("loja")
+@Entity
+@Table(name = "loja")
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Loja {
 	
 	@Id
@@ -22,10 +22,10 @@ public class Loja {
 	
 	private String descricaoLoja;
 	
-	private Endereco enderecoDaLoja;
+	@Embedded
+	private Endereco endereco;
 	
-	private List<Contato> contatosDaLoja;
-	
-	
+	@Embedded
+	private Contato contatoDaLoja;
 
 }

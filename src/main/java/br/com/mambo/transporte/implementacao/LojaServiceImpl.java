@@ -8,26 +8,27 @@ import org.springframework.stereotype.Service;
 import br.com.mambo.transporte.model.Loja;
 import br.com.mambo.transporte.repository.LojaRepository;
 import br.com.mambo.transporte.service.LojaService;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class LojaImplementacao implements LojaService {
+public class LojaServiceImpl implements LojaService {
 
 	@Autowired
-	public LojaRepository lojaRepository;
-
+	private LojaRepository lojaRepository;
+	
 	@Override
-	public Loja addLoja(Loja loja) {
+	public Loja addNovaLoja(Loja loja) {
 		return lojaRepository.save(loja);
 	}
 
 	@Override
-	public List<Loja> listarTodasLojas() {
+	public List<Loja> buscarTodasLojasCadastradas() {
 		return lojaRepository.findAll();
 	}
 
 	@Override
-	public Loja buscarLojaPeloNome(String nome) {
-		return lojaRepository.findByNomeLoja(nome);
+	public Loja buscarLojaPorNome(String nome) {
+	return lojaRepository.findById(nome).orElseThrow(() -> new EntityNotFoundException("Loja "+nome+" inexistente."));
 	}
 
 }

@@ -1,5 +1,10 @@
 spring:
-  data:
-    mongodb:
-      uri: mongodb+srv://daniellopes1000:pedropaulo123@mambodesenvolvimento.i8o1xnx.mongodb.net/
-      database: mamboDesenvolvimento
+  datasource:
+    url:  jdbc:postgresql://dpg-ciojqp6nqqlfegcif4i0-a.oregon-postgres.render.com:5432/database_render_spring_boot_7lce
+    username:  database_render_spring_boot_7lce_user
+    password: idasWDI8Kll8DxmrMaSws01tP0Lq56kr
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    

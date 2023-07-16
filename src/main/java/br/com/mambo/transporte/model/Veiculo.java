@@ -1,27 +1,28 @@
 package br.com.mambo.transporte.model;
 
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Document("veiculo")
+@Entity
+@Table(name = "veiculo")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Veiculo {
 
 	@Id
 	private String placa;
 	
-	private String tipoVeiculo;
+	private String modelo;
 	
-	private int limiteDePallets;
+	private String tipoDoVeiculo;
 	
+	private Integer capacidadeDePallets;
 	
 }

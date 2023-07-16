@@ -1,12 +1,11 @@
 package br.com.mambo.transporte.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.mambo.transporte.model.Origem;
 
+@Repository 
+public interface OrigemRepository extends JpaRepository<Origem, String>{
 
-public interface OrigemRepository extends MongoRepository<Origem, String> {
-
-	public Origem findByNome(String nome);
-	
 }
