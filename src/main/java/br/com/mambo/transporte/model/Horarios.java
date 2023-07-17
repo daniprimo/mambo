@@ -28,8 +28,24 @@ public class Horarios {
 	private String saidaLoja;
 
 	private String chegadaCD;
+	
+	
 
 	public void setData() {
 		this.data = LocalDate.now();
+	}
+
+
+
+	public Horarios(String saidaCD, String chegadaLoja, String inicioDescarregamento, String fimDoCarregamento,
+			String saidaLoja, String chegadaCD) {
+		super();
+		setData();
+		this.saidaCD = saidaCD;
+		this.chegadaLoja = chegadaLoja;
+		this.inicioDescarregamento = inicioDescarregamento;
+		this.fimDoCarregamento = fimDoCarregamento;
+		this.saidaLoja = saidaLoja;
+		this.chegadaCD = chegadaCD;
 	}
 }

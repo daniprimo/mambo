@@ -27,4 +27,6 @@ public class Motorista {
 	@Embedded
 	private CNH numeroDaCnh;
 	
+	
+	
 }
