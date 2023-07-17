@@ -1,6 +1,8 @@
 package br.com.mambo.transporte.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "entregas")
+@Table(name = "lojaEntregas")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,6 +20,7 @@ import lombok.Setter;
 public class LojaEntregas {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@ManyToOne
@@ -28,6 +31,8 @@ public class LojaEntregas {
 	private Integer quantidadeDePalletFlv;
 	
 	private Integer quantidadeDePalletFriozem;
+	
+	
 	
 	
 	
