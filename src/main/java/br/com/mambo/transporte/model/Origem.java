@@ -1,24 +1,28 @@
 package br.com.mambo.transporte.model;
 
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Document("origem")
+@Entity
+@Table(name = "origem")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Origem {
 	
 	@Id
 	private String nome;
-	private String descricaoOrigem;
+	
+	private String descricao;
+	
+	@Embedded
 	private Endereco endereco;
 
 }

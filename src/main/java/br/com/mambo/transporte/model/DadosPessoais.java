@@ -1,24 +1,21 @@
 package br.com.mambo.transporte.model;
 
-import org.springframework.data.annotation.Id;
-
+import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Embeddable
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Ajudante {
-	
-	@Id
-	private String nome;
-	
+@AllArgsConstructor
+public class DadosPessoais {
+
 	private String nomeCompleto;
-	
-	private String telefone;	
-	
+	private String rg;
+	private String cpf;
+	private String numeroParaContato;
 
 }

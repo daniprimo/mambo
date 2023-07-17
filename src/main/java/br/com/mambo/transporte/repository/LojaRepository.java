@@ -1,12 +1,11 @@
 package br.com.mambo.transporte.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.mambo.transporte.model.Loja;
 
+@Repository
+public interface LojaRepository extends JpaRepository<Loja, String>{
 
-public interface LojaRepository extends MongoRepository<Loja, String> {
-	
-	public Loja findByNomeLoja(String nomeLoja);
-	
 }

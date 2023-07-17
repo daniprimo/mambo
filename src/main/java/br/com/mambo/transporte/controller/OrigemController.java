@@ -18,26 +18,26 @@ import io.swagger.v3.oas.annotations.Operation;
 @RestController
 @RequestMapping("/origem")
 public class OrigemController {
-
+	
 	@Autowired
-	public OrigemService origemService;
+	private OrigemService origemService;
 	
-	@Operation(summary = "Adicionar nova origem.")
+	@Operation(summary = "Adicionando uma nova origem.")
 	@PostMapping
-	public ResponseEntity<Origem> addOrigem(@RequestBody Origem origem){
-		return ResponseEntity.ok(origemService.addOrigem(origem));
+	public ResponseEntity<Origem> addNovaOrigem(@RequestBody Origem origem){
+		return ResponseEntity.ok(origemService.addNovaOrigem(origem));
 	}
-	
-	@Operation(summary = "Listar todas as origens")
+
+	@Operation(summary = "Buscar todos os veiculo.")
 	@GetMapping
-	public ResponseEntity<List<Origem>> listarOrigens(){
-		return ResponseEntity.ok(origemService.listaDeOrigens());
+	public ResponseEntity<List<Origem>> buscarTodasAsOrigens(){
+		return ResponseEntity.ok(origemService.buscarTodasOrigensCadastradas());
 	}
-	
-	@Operation(summary = "Buscar origem por nome apelido do local ou nome")
+
+	@Operation(summary = "Buscar origem pelo nome.")
 	@GetMapping("nome={nome}")
 	public ResponseEntity<Origem> buscarOrigemPeloNome(@PathVariable String nome){
-		return ResponseEntity.ok(origemService.pesquisarOrigemPelaNome(nome));
+		return ResponseEntity.ok(origemService.buscarLojaPorNomeDaOrigem(nome));
 	}
-	
+
 }

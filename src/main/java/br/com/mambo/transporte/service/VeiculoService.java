@@ -6,10 +6,10 @@ import br.com.mambo.transporte.model.Veiculo;
 
 public interface VeiculoService {
 	
-	public Veiculo addVeiculo(Veiculo veiculo);
-	
-	public List<Veiculo> listaDeTodosVeiculo();
-	
-	public Veiculo pesquisarPorPlaca(String placa);
+	public List<Veiculo> todosOsVeiculos();
+	public Veiculo obterPorPlaca(String placa);
+	public Veiculo criar(Veiculo veiculo);
+	public List<Veiculo> obterTodosVeiculosApartirDaQuantidadeDePallets(Integer quantidade);
+
 	
 }

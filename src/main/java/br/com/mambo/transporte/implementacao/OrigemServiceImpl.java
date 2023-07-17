@@ -10,24 +10,24 @@ import br.com.mambo.transporte.repository.OrigemRepository;
 import br.com.mambo.transporte.service.OrigemService;
 
 @Service
-public class OrigemImplementacao implements OrigemService {
-
-	@Autowired
-	public OrigemRepository origemRepository;
+public class OrigemServiceImpl implements OrigemService {
 	
+	@Autowired
+	private OrigemRepository origemRepository;
+
 	@Override
-	public Origem addOrigem(Origem origem) {
+	public Origem addNovaOrigem(Origem origem) {
 		return origemRepository.save(origem);
 	}
 
 	@Override
-	public List<Origem> listaDeOrigens() {
+	public List<Origem> buscarTodasOrigensCadastradas() {
 		return origemRepository.findAll();
 	}
 
 	@Override
-	public Origem pesquisarOrigemPelaNome(String nome) {
-		return origemRepository.findByNome(nome);
+	public Origem buscarLojaPorNomeDaOrigem(String nome) {
+		return origemRepository.findById(nome).get();
 	}
 
 }

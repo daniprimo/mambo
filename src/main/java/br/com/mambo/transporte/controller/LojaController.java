@@ -18,29 +18,26 @@ import io.swagger.v3.oas.annotations.Operation;
 @RestController
 @RequestMapping("/loja")
 public class LojaController {
-
+	
 	@Autowired
-	public LojaService lojaService;
-	
-	@Operation(summary = "Adicionar nova loja")
+	private LojaService lojaService;
+
+	@Operation(summary = "Adicionando uma nova loja.")
 	@PostMapping
-	public ResponseEntity<Loja> addLoja(@RequestBody Loja loja){
-		return ResponseEntity.ok(lojaService.addLoja(loja));
+	public ResponseEntity<Loja> addNovaLoja(@RequestBody Loja loja){
+		return ResponseEntity.ok(lojaService.addNovaLoja(loja));
 	}
 	
-	@Operation(summary = "Listar todas as lojas")
+	@Operation(summary = "Buscar todas as lojas.")
 	@GetMapping
-	public ResponseEntity<List<Loja>> listarTodasAsLojas(){
-		return ResponseEntity.ok(lojaService.listarTodasLojas());
+	public ResponseEntity<List<Loja>> todasLojas(){
+		return ResponseEntity.ok(lojaService.buscarTodasLojasCadastradas());
 	}
 	
-	@Operation(summary = "Buscar loja pelo nome")
-	@GetMapping("loja={nome}")
-	public ResponseEntity<Loja> addLoja(@PathVariable String nome){
-		return ResponseEntity.ok(lojaService.buscarLojaPeloNome(nome));
+	@Operation(summary = "Buscar lojas por nome.")
+	@GetMapping("nome={nome}")
+	public ResponseEntity<Loja> buscarLojaPorNome(@PathVariable String nome){
+		return ResponseEntity.ok(lojaService.buscarLojaPorNome(nome));
 	}
-
-
 	
- 	
 }

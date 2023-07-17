@@ -1,46 +1,34 @@
 package br.com.mambo.transporte.model;
 
-
-import java.time.LocalDate;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Document("entregas")
+@Entity
+@Table(name = "entregas")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class LojaEntregas {
-	
-	@Id
-	private String id;
-	
-	@DBRef
-	private Loja loja;
-	
-	private String quantidadeDePalletFlv;
-	
-	private String quantidadeDePalletMercearia;
-	
-	private String quantidadeDePalletFriozem;
-	
-	private LocalDate data = LocalDate.now();
 
-	public LojaEntregas(Loja loja, String quantidadeDePalletFlv, String quantidadeDePalletMercearia,
-			String quantidadeDePalletFriozem) {
-		super();
-		this.loja = loja;
-		this.quantidadeDePalletFlv = quantidadeDePalletFlv;
-		this.quantidadeDePalletMercearia = quantidadeDePalletMercearia;
-		this.quantidadeDePalletFriozem = quantidadeDePalletFriozem;
-	}
+	@Id
+	private Long id;
+	
+	@ManyToOne
+	private Loja loja;
+		
+	private Integer quantidadeDePalletMercearia;
+	
+	private Integer quantidadeDePalletFlv;
+	
+	private Integer quantidadeDePalletFriozem;
+	
 	
 	
 }

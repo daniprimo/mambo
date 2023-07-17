@@ -6,10 +6,8 @@ import br.com.mambo.transporte.model.Loja;
 
 public interface LojaService {
 	
-	public Loja addLoja(Loja loja);
-	
-	public List<Loja> listarTodasLojas();
-	
-	public Loja buscarLojaPeloNome(String nome);
+	public Loja addNovaLoja(Loja loja);
+	public List<Loja> buscarTodasLojasCadastradas();
+	public Loja buscarLojaPorNome(String nome);
 
 }
