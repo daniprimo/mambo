@@ -9,5 +9,6 @@ public interface ViagemService {
 	
 	public Viagem programarNovaViagem(ViagemDTO dto);
 	public List<Viagem> listarViagensProgramadas();
+	public Viagem buscarPorId(Long id);
 
 }
