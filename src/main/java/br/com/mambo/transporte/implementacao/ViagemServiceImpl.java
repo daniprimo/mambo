@@ -25,6 +25,7 @@ import br.com.mambo.transporte.service.OrigemService;
 import br.com.mambo.transporte.service.VeiculoService;
 import br.com.mambo.transporte.service.ViagemService;
 import br.com.mambo.transporte.utils.enuns.StatusEnum;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ViagemServiceImpl implements ViagemService {
@@ -100,6 +101,11 @@ public class ViagemServiceImpl implements ViagemService {
 	@Override
 	public List<Viagem> listarViagensProgramadas() {
 		return viagemRepository.findAll();
+	}
+
+	@Override
+	public Viagem buscarPorId(Long id) {
+		return viagemRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Registro nao encontrado"));
 	}
 
 }
