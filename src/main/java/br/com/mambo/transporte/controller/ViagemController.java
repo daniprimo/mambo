@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mambo.transporte.dto.ViagemDTO;
+import br.com.mambo.transporte.model.Horarios;
 import br.com.mambo.transporte.model.Viagem;
 import br.com.mambo.transporte.service.ViagemService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,5 +41,12 @@ public class ViagemController {
 	public ResponseEntity<Viagem> listarViagemINPorId(@PathVariable Long id) {
 		return ResponseEntity.ok(viagemService.buscarPorId(id));
 	}
+	
+	@Operation(summary = "Pegar horários pelo numero da viagem.")
+	@GetMapping("/horario/{id}")
+	public ResponseEntity<Horarios> pegarHorario(@PathVariable Long id) {
+		return ResponseEntity.ok(viagemService.buscarHorarioPorId(id));
+	}
+
 
 }
