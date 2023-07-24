@@ -108,4 +108,16 @@ public class ViagemServiceImpl implements ViagemService {
 		return viagemRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Registro nao encontrado"));
 	}
 
+	@Override
+	public Horarios buscarHorarioPorId(Long id) {
+		Viagem viagem = buscarPorId(id);
+		Horarios horarios = viagem.getHorarios();
+		horarios.setChegadaLoja("00:00");
+		horarios.setInicioDescarregamento("00:00");
+		horarios.setFimDoCarregamento("00:00");
+		horarios.setSaidaLoja("00:00");
+		horarios.setChegadaCD("00:00");
+		return horarios;
+	}
+
 }
