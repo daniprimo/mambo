@@ -1,5 +1,6 @@
 package br.com.mambo.transporte.model;
 
+
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -47,6 +48,15 @@ public class Viagem {
 	@Embedded
 	private Horarios horarios;
 	
+	private String horaDoRegistro;
+	
+	public void horarioStam() {
+		
+	}
+	
+	public static void main(String[] args) {
+		System.out.println();
+	}
 
 
 }

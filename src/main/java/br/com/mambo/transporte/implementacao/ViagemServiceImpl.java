@@ -1,11 +1,16 @@
 package br.com.mambo.transporte.implementacao;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.mambo.transporte.dto.LojasEntregasDTO;
@@ -55,7 +60,8 @@ public class ViagemServiceImpl implements ViagemService {
 		Veiculo veiculo = buscandoVeiculoPelaPlaca(dto.getPlaca());
 		Origem origem = buscandoOrigemPeloNome(dto.getOrigem());
 		List<LojaEntregas> lojas = obterLojasEbtrefas(dto.getLojas());
-		Viagem viagem = new Viagem(null, null, motorista, veiculo, origem, lojas, horario);
+		String registro = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+		Viagem viagem = new Viagem(null, null, motorista, veiculo, origem, lojas, horario, registro);
 		viagem.setStatus(StatusEnum.STATUS_VIAGEM_PROGRAMADA.getDescricao());
 		return viagemRepository.save(viagem);
 	}
@@ -90,8 +96,8 @@ public class ViagemServiceImpl implements ViagemService {
 	}
 
 	private Horarios setandoHorariosPadrao() {
-		return new Horarios(new SimpleDateFormat("hh:mm").format(new Date()).toString(),
-				null, null, null, null, null);
+		return new Horarios("00:00",
+				"00:00", "00:00", "00:00", "00:00", "00:00");
 	}
 
 	private Motorista buscandoInfosDoMotoristaPeloNome(String  nomeDoMotorista) {
@@ -112,12 +118,16 @@ public class ViagemServiceImpl implements ViagemService {
 	public Horarios buscarHorarioPorId(Long id) {
 		Viagem viagem = buscarPorId(id);
 		Horarios horarios = viagem.getHorarios();
-		horarios.setChegadaLoja("00:00");
-		horarios.setInicioDescarregamento("00:00");
-		horarios.setFimDoCarregamento("00:00");
-		horarios.setSaidaLoja("00:00");
-		horarios.setChegadaCD("00:00");
 		return horarios;
 	}
+
+	@Override
+	public List<Viagem> findByData(String data) {
+		LocalDate dataAtual = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+		
+		LocalDate inputData = data.equals("") ? dataAtual  : LocalDate.parse(data);
+		return viagemRepository.findAllData(inputData);
+	}
+
 
 }
