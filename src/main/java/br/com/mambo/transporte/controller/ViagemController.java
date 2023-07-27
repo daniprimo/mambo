@@ -3,8 +3,6 @@ package br.com.mambo.transporte.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +49,7 @@ public class ViagemController {
 		return ResponseEntity.ok(viagemService.buscarHorarioPorId(id));
 	}
 	
+	@Operation(summary = "Pegar viagem pela data passada por parametro.")
 	@GetMapping
 	public List<Viagem> findViagem(@RequestParam(value = "data", defaultValue = "") String data){
 		return viagemService.findByData(data);

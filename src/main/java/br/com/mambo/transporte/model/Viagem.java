@@ -1,8 +1,13 @@
 package br.com.mambo.transporte.model;
 
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
+import br.com.mambo.transporte.utils.enuns.StatusEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -54,8 +59,16 @@ public class Viagem {
 		
 	}
 	
-	public static void main(String[] args) {
-		System.out.println();
+	public void consolidarInicioDoCarregamento() {
+		String horaAtual = horaAtual();
+		horarios.setInicioDescarregamento(horaAtual);
+		setStatus(StatusEnum.STATUS_VIAGEM_EM_CARREGAMENTO.getDescricao());	
+		
+	}
+
+	private String horaAtual() {
+		DateTimeFormatter horaAtual = DateTimeFormatter.ofPattern("HH:mm");
+		return horaAtual.format(ZonedDateTime.now());
 	}
 
 
