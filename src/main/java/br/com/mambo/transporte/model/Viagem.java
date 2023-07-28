@@ -131,7 +131,7 @@ public class Viagem {
 	public void consolidarChegadaCD() {
 		String horaAtual = horaAtual();
 		
-		horarios.setFimDoCarregamento(horaAtual);
+		horarios.setChegadaCD(horaAtual);
 		
 		mudarStatusDaViagemPara(StatusEnum
 				.STATUS_VIAGEM_FINALIZADA.getDescricao());	
