@@ -20,45 +20,78 @@ public class ViagemAcoesImpl implements AcoesServices {
 
 	@Override
 	public Viagem consolidarHorarioProgramado(Long id) {
-		Viagem viagemAtualizada = viagemService.buscarPorId(id);
-		viagemAtualizada.consolidarInicioDoCarregamento();
 		return null;
 	}
 
 	@Override
 	public Viagem consolidarHorarioInicioCarregamento(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Viagem viagemParaAtualziar = buscarViagemParaAtualziar(id);
+		if (isContain(viagemParaAtualziar
+				.getHorarios().getInicioDescarregamento())) {			
+			viagemParaAtualziar.consolidarInicioDoCarregamento();
+		}
+		return viagemRepository.save(viagemParaAtualziar);
+	}
+	
+	private boolean isContain(String horario) {
+		if (horario.equals("")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	private Viagem buscarViagemParaAtualziar(Long id) {
+		return viagemService.buscarPorId(id);
 	}
 
 	@Override
 	public Viagem consolidarHorarioFinalDeCarregamento(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Viagem viagemParaAtualziar = buscarViagemParaAtualziar(id);
+		if (isContain(viagemParaAtualziar.getHorarios().getFimDoCarregamento())) {			
+			viagemParaAtualziar.consolidarFinalDeCarregamento();
+		}
+		return viagemRepository.save(viagemParaAtualziar);
 	}
 
 	@Override
 	public Viagem consolidarHorarioSaidaCD(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Viagem viagemParaAtualziar = buscarViagemParaAtualziar(id);
+		if (isContain(viagemParaAtualziar
+				.getHorarios().getSaidaCD())) {			
+			viagemParaAtualziar.consolidarSaidaCD();
+		}
+		return viagemRepository.save(viagemParaAtualziar);	
 	}
 
 	@Override
 	public Viagem consolidarHorarioChegadaLoja(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Viagem viagemParaAtualziar = buscarViagemParaAtualziar(id);
+		if (isContain(viagemParaAtualziar
+				.getHorarios().getChegadaLoja())) {			
+			viagemParaAtualziar.consolidarChegadaLoja();
+		}
+		return viagemRepository.save(viagemParaAtualziar);	
 	}
 
 	@Override
 	public Viagem consolidarHorarioSaidaLoja(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Viagem viagemParaAtualziar = buscarViagemParaAtualziar(id);
+		if (isContain(viagemParaAtualziar
+				.getHorarios().getSaidaLoja())) {			
+			viagemParaAtualziar.consolidarSaidaLoja();
+		}
+		return viagemRepository.save(viagemParaAtualziar);
 	}
 
 	@Override
 	public Viagem consolidarHorarioChegadaCD(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Viagem viagemParaAtualziar = buscarViagemParaAtualziar(id);
+		if (isContain(viagemParaAtualziar
+				.getHorarios().getChegadaCD())) {			
+			viagemParaAtualziar.consolidarChegadaCD();
+		}
+		return viagemRepository.save(viagemParaAtualziar);	
 	}
 
 	
