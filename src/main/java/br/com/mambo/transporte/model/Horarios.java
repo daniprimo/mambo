@@ -34,6 +34,15 @@ public class Horarios {
 	public void setData() {
 		this.data = LocalDate.now();
 	}
+	
+	public void horarioComStrinsVazias() {
+		inicioDescarregamento = "";
+		fimDoCarregamento = "";
+		saidaCD = "";
+		chegadaLoja = "";
+		saidaLoja = "";
+		chegadaCD = "";		
+	}
 
 
 

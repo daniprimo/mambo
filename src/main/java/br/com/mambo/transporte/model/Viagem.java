@@ -1,8 +1,13 @@
 package br.com.mambo.transporte.model;
 
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
+import br.com.mambo.transporte.utils.enuns.StatusEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -50,12 +55,87 @@ public class Viagem {
 	
 	private String horaDoRegistro;
 	
-	public void horarioStam() {
-		
+	public void setarAsStringsVaziasNosHorários() {
+		horarios.horarioComStrinsVazias();
 	}
 	
-	public static void main(String[] args) {
-		System.out.println();
+	public void consolidarProgramado() {
+		String horaAtual = horaAtual();
+		
+		setHoraDoRegistro(horaAtual);
+		
+		mudarStatusDaViagemPara(StatusEnum
+				.STATUS_VIAGEM_PROGRAMADA.getDescricao());	
+
+	}
+	
+	public void consolidarInicioDoCarregamento() {
+		String horaAtual = horaAtual();
+		
+		horarios.setInicioDescarregamento(horaAtual);
+		
+		mudarStatusDaViagemPara(StatusEnum
+				.STATUS_VIAGEM_EM_CARREGAMENTO.getDescricao());	
+		
+	}
+
+	private void mudarStatusDaViagemPara(String status) {
+		setStatus(status);
+	}
+
+	private String horaAtual() {
+		DateTimeFormatter horaAtual = DateTimeFormatter.ofPattern("HH:mm");
+		return horaAtual.format(ZonedDateTime.now());
+	}
+
+	public void consolidarFinalDeCarregamento() {
+		String horaAtual = horaAtual();
+		
+		horarios.setFimDoCarregamento(horaAtual);
+		
+		mudarStatusDaViagemPara(StatusEnum
+				.STATUS_VIAGEM_FIM_CARREGAMENTO.getDescricao());	
+		
+	}
+
+	public void consolidarSaidaCD() {
+		String horaAtual = horaAtual();
+		
+		horarios.setSaidaCD(horaAtual);
+		
+		mudarStatusDaViagemPara(StatusEnum
+				.STATUS_VIAGEM_EM_TRANSITO_LOJA.getDescricao());	
+		
+	}
+
+	public void consolidarChegadaLoja() {
+		String horaAtual = horaAtual();
+		
+		horarios.setChegadaLoja(horaAtual);
+		
+		mudarStatusDaViagemPara(StatusEnum
+				.STATUS_VIAGEM_DESCARREGAMENTO_LOJA.getDescricao());	
+		
+	}
+
+	public void consolidarSaidaLoja() {
+		String horaAtual = horaAtual();
+		
+		horarios.setSaidaLoja(horaAtual);
+		
+		mudarStatusDaViagemPara(StatusEnum
+				.STATUS_VIAGEM_EM_TRANSITO_CD.getDescricao());	
+		
+	}
+
+	public void consolidarChegadaCD() {
+		String horaAtual = horaAtual();
+		
+		horarios.setFimDoCarregamento(horaAtual);
+		
+		mudarStatusDaViagemPara(StatusEnum
+				.STATUS_VIAGEM_FINALIZADA.getDescricao());	
+		
 	}
 
 

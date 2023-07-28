@@ -9,8 +9,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.mambo.transporte.dto.LojasEntregasDTO;
@@ -55,14 +53,19 @@ public class ViagemServiceImpl implements ViagemService {
 
 	@Override
 	public Viagem programarNovaViagem(ViagemDTO dto) {
-		Horarios horario = setandoHorariosPadrao();
-		Motorista motorista = buscandoInfosDoMotoristaPeloNome(dto.getMotorista());
+		Motorista motorista = 
+				buscandoInfosDoMotoristaPeloNome(dto.getMotorista());
 		Veiculo veiculo = buscandoVeiculoPelaPlaca(dto.getPlaca());
 		Origem origem = buscandoOrigemPeloNome(dto.getOrigem());
 		List<LojaEntregas> lojas = obterLojasEbtrefas(dto.getLojas());
-		String registro = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
-		Viagem viagem = new Viagem(null, null, motorista, veiculo, origem, lojas, horario, registro);
-		viagem.setStatus(StatusEnum.STATUS_VIAGEM_PROGRAMADA.getDescricao());
+		String registro = new SimpleDateFormat("HH:mm")
+				.format(Calendar.getInstance().getTime());
+		Viagem viagem = new Viagem(null, null, motorista,
+				veiculo, origem, lojas, new Horarios(), registro);
+		viagem
+			.consolidarProgramado();
+		viagem
+			.setarAsStringsVaziasNosHorários();
 		return viagemRepository.save(viagem);
 	}
 
