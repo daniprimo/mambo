@@ -35,13 +35,16 @@ public class Horarios {
 		this.data = LocalDate.now();
 	}
 	
+	
 	public void horarioComStrinsVazias() {
-		inicioDescarregamento = "";
-		fimDoCarregamento = "";
-		saidaCD = "";
-		chegadaLoja = "";
-		saidaLoja = "";
-		chegadaCD = "";		
+		LocalDate data = LocalDate.now();
+		this.data = data;
+		this.inicioDescarregamento = "";
+		this.fimDoCarregamento = "";
+		this.saidaCD = "";
+		this.chegadaLoja = "";
+		this.saidaLoja = "";
+		this.chegadaCD = "";		
 	}
 
 
