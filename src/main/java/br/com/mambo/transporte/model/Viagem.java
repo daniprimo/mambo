@@ -1,6 +1,7 @@
 package br.com.mambo.transporte.model;
 
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -84,7 +85,7 @@ public class Viagem {
 	}
 
 	private String horaAtual() {
-		DateTimeFormatter horaAtual = DateTimeFormatter.ofPattern("HH:mm");
+		DateTimeFormatter horaAtual = DateTimeFormatter.ofPattern("HH:mm").withZone(ZoneId.of("America/Sao_Paulo"));
 		return horaAtual.format(ZonedDateTime.now());
 	}
 
