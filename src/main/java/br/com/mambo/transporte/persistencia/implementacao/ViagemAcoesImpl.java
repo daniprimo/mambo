@@ -1,12 +1,12 @@
-package br.com.mambo.transporte.implementacao;
+package br.com.mambo.transporte.persistencia.implementacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.mambo.transporte.model.Viagem;
-import br.com.mambo.transporte.repository.ViagemRepository;
-import br.com.mambo.transporte.service.AcoesServices;
-import br.com.mambo.transporte.service.ViagemService;
+import br.com.mambo.transporte.persistencia.repository.ViagemRepository;
+import br.com.mambo.transporte.persistencia.service.AcoesServices;
+import br.com.mambo.transporte.persistencia.service.ViagemService;
 
 @Service
 public class ViagemAcoesImpl implements AcoesServices {

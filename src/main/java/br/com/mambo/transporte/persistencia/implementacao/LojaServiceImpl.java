@@ -1,4 +1,4 @@
-package br.com.mambo.transporte.implementacao;
+package br.com.mambo.transporte.persistencia.implementacao;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.mambo.transporte.model.Loja;
-import br.com.mambo.transporte.repository.LojaRepository;
-import br.com.mambo.transporte.service.LojaService;
+import br.com.mambo.transporte.persistencia.repository.LojaRepository;
+import br.com.mambo.transporte.persistencia.service.LojaService;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service

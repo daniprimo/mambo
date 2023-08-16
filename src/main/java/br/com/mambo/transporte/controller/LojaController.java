@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mambo.transporte.model.Loja;
-import br.com.mambo.transporte.service.LojaService;
+import br.com.mambo.transporte.persistencia.service.LojaService;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController

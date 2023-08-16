@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.mambo.transporte.dto.ViagemDTO;
 import br.com.mambo.transporte.model.Horarios;
 import br.com.mambo.transporte.model.Viagem;
-import br.com.mambo.transporte.service.ViagemService;
+import br.com.mambo.transporte.persistencia.service.ViagemService;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController

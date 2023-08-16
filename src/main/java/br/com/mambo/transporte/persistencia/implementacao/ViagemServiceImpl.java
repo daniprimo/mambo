@@ -1,4 +1,4 @@
-package br.com.mambo.transporte.implementacao;
+package br.com.mambo.transporte.persistencia.implementacao;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -20,13 +20,13 @@ import br.com.mambo.transporte.model.Motorista;
 import br.com.mambo.transporte.model.Origem;
 import br.com.mambo.transporte.model.Veiculo;
 import br.com.mambo.transporte.model.Viagem;
-import br.com.mambo.transporte.repository.ViagemRepository;
-import br.com.mambo.transporte.service.LojaEntregasService;
-import br.com.mambo.transporte.service.LojaService;
-import br.com.mambo.transporte.service.MotoristaService;
-import br.com.mambo.transporte.service.OrigemService;
-import br.com.mambo.transporte.service.VeiculoService;
-import br.com.mambo.transporte.service.ViagemService;
+import br.com.mambo.transporte.persistencia.repository.ViagemRepository;
+import br.com.mambo.transporte.persistencia.service.LojaEntregasService;
+import br.com.mambo.transporte.persistencia.service.LojaService;
+import br.com.mambo.transporte.persistencia.service.MotoristaService;
+import br.com.mambo.transporte.persistencia.service.OrigemService;
+import br.com.mambo.transporte.persistencia.service.VeiculoService;
+import br.com.mambo.transporte.persistencia.service.ViagemService;
 import br.com.mambo.transporte.utils.enuns.StatusEnum;
 import jakarta.persistence.EntityNotFoundException;
 

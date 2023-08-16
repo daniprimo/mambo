@@ -1,4 +1,4 @@
-package br.com.mambo.transporte.service;
+package br.com.mambo.transporte.persistencia.service;
 
 import java.util.List;
 

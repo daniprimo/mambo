@@ -1,4 +1,4 @@
-package br.com.mambo.transporte.implementacao;
+package br.com.mambo.transporte.persistencia.implementacao;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.mambo.transporte.model.Motorista;
-import br.com.mambo.transporte.repository.MotoristaRepository;
-import br.com.mambo.transporte.service.MotoristaService;
+import br.com.mambo.transporte.persistencia.repository.MotoristaRepository;
+import br.com.mambo.transporte.persistencia.service.MotoristaService;
 
 @Service
 public class MotoristaServiceImpl implements MotoristaService{
