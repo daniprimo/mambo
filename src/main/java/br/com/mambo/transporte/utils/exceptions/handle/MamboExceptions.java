@@ -15,6 +15,8 @@ public class MamboExceptions extends RuntimeException {
 		this.menssagem = menssagem;
 	}
 	
+	public MamboExceptions() {
+	}
 	
 
 }

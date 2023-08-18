@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.reactive.result.method.annotation.ResponseEntityExceptionHandler;
 
-import br.com.mambo.transporte.utils.exceptions.NaoEncontradoNoBancoDeDados;
+import br.com.mambo.transporte.utils.exceptions.ErroAoRealizarUmaBuscaNoBD;
+import br.com.mambo.transporte.utils.exceptions.ErroAoSalvarEntidadeNoBD;
+import br.com.mambo.transporte.utils.exceptions.ErroQuandoORetornoForNull;
 import br.com.mambo.transporte.utils.exceptions.dto.DefaultError;
 import br.com.mambo.transporte.utils.exceptions.dto.StandarError;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,25 +29,37 @@ public class AplicacaoException extends ResponseEntityExceptionHandler {
 		return new ResponseEntity(err, HttpStatus.BAD_GATEWAY);
 	}
 	
-	@ExceptionHandler(NaoEncontradoNoBancoDeDados.class)
-	public ResponseEntity<StandarError> naoEncontradoNoBancoDeDados(NaoEncontradoNoBancoDeDados e, HttpServletRequest request){
+	@ExceptionHandler(ErroAoRealizarUmaBuscaNoBD.class)
+	public ResponseEntity<StandarError> naoEncontradoNoBancoDeDados(ErroAoRealizarUmaBuscaNoBD e, HttpServletRequest request){
 		StandarError err = new StandarError();
 		err.setTimestamp(Instant.now());
 		err.setStatus(HttpStatus.NOT_FOUND.value());
-		err.setError("Não encontrado no banco de dados");
+		err.setError("Erro ao realizar uma busca no banco de dados.");
 		err.setMessage(e.getMenssagem());
 		err.setPath(request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 
-	
-	public ResponseEntity<StandarError> dsadas(NaoEncontradoNoBancoDeDados e, HttpServletRequest request){
+	@ExceptionHandler(ErroAoSalvarEntidadeNoBD.class)
+	public ResponseEntity<StandarError> erroAoSalvarEntidadeNoBancoDeDados
+	(ErroAoSalvarEntidadeNoBD e, HttpServletRequest request){
 		StandarError err = new StandarError();
+		err.setTimestamp(Instant.now());
+		err.setStatus(HttpStatus.NOT_FOUND.value());
+		err.setError("Erro salvar algo no Banco de Dados");
+		err.setMessage(e.getMenssagem());
+		err.setPath(request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 
-	public ResponseEntity<StandarError> dsadf(NaoEncontradoNoBancoDeDados e, HttpServletRequest request){
+	@ExceptionHandler(ErroQuandoORetornoForNull.class)
+	public ResponseEntity<StandarError> dsadf(ErroQuandoORetornoForNull e, HttpServletRequest request){
 		StandarError err = new StandarError();
+		err.setTimestamp(Instant.now());
+		err.setStatus(HttpStatus.NOT_FOUND.value());
+		err.setError("Erro quando os retornos for null");
+		err.setMessage(e.getMenssagem());
+		err.setPath(request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 

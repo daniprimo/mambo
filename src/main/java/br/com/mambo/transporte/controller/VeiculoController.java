@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,7 @@ public class VeiculoController {
 			@ApiResponse(responseCode = "500", description = "Falha no código fonte, reporte a equipe de T.I para dar a devida manutenção.")
 	})
 	@PostMapping
-	public ResponseEntity<Veiculo> addNovoVeiculo(Veiculo veiculo) {
+	public ResponseEntity<Veiculo> addNovoVeiculo(@RequestBody Veiculo veiculo) {
 		return ResponseEntity.ok(veiculoService.criar(veiculo));
 	}
 
